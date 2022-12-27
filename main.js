@@ -14,6 +14,21 @@ let secretNumber = Math.trunc(Math.random() * 20) + 1;
 
 let score = 20;
 let highscore = 0;
+const jsConfetti = new JSConfetti();
+
+function confettyFy() {
+  jsConfetti.addConfetti(
+    {
+      confettiRadius: 6,
+      confettiNumber: 500,
+    },
+    {
+      emojis: ["🦄"],
+      emojiSize: 100,
+      confettiNumber: 30,
+    }
+  );
+}
 
 document.querySelector(".check").addEventListener("click", function () {
   const guess = Number(document.querySelector(".guess").value);
@@ -27,7 +42,7 @@ document.querySelector(".check").addEventListener("click", function () {
     document.querySelector(".message").textContent = "🎉Correct Number!";
     document.querySelector(".number").textContent = secretNumber;
     document.querySelector("body").style.backgroundColor = "#60b347";
-
+    confettyFy();
     document.querySelector(".number").style.width = "30rem";
 
     if (score > highscore) {
